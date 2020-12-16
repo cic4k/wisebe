@@ -15,17 +15,17 @@ install_requires = [x.strip() for x in all_reqs if ('git+' not in x) and (not x.
 dependency_links = [x.strip().replace('git+', '') for x in all_reqs if 'git+' not in x]
 
 setup(
-    name = 'wisebe',
-    description = 'WiSeBE evaluation tool',
+    name = 'wisebetool',
+    description = 'Window based Sentence Boundary Evaluation Toolkit (WiSeBETool)',
     version = '1.0.0',
     packages = find_packages(), # list of all packages
     install_requires = install_requires,
     python_requires='>=3.9', # any python greater than 2.7
     entry_points='''
         [console_scripts]
-        wisebe=wisebe.__main__:main
+        wisebetool=wisebe.__main__:main
     ''',
-    author="Carlos González",
+    author="González-Gallardo, C. E., & Torres-Moreno, J. M.",
     keyword="sentence boundary detection evaluation",
     long_description=README,
     long_description_content_type="text/markdown",

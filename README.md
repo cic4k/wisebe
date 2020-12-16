@@ -1,8 +1,16 @@
-# WiSeBE - Window based Sentence Boundary Evaluation
+# WiSeBETool - Window based Sentence Boundary Evaluation Toolkit 
 
-This is a framework to evaluate automatic SUs segmentation systems.
+**WiSeBETool** is a toolkit to evaluate automatic Sentence Boundary Detection (SBD) systems based on the semi-supervised performance evaluation protocol [WiSeBE](https://doi.org/10.1007/978-3-030-04497-8_10).
 
-It considers a set of references to general a General Reference (GR) and window borders.
+WiSeBE considers the multi-reference (dis)agreement of a set of references to create a General Reference (GR) and a set of window borders. You can download the WiSeBE reference paper [here](https://arxiv.org/abs/1808.08850).
+
+
+You can cite this toolkit as :
+
+> González-Gallardo, C. E., & Torres-Moreno, J. M. (2018, October). WiSeBE: Window-based Sentence Boundary Evaluation. In Mexican International Conference on Artificial Intelligence (pp. 119-131). Springer, Cham.
+
+or download the [Bibtex](https://raw.githubusercontent.com/cic4k/wisebe/main/wisebe.bib "WiSeBE Bibtex").
+
 
 ---
 
@@ -21,13 +29,13 @@ It considers a set of references to general a General Reference (GR) and window 
 **Display options and get general information of WiSeBE**
 
 ```bash
-$ wisebe -h  
+$ wisebetool -h  
 ```
 Output
 ```
-usage: wisebe [-h] [-r REFERENCES_DIR] [-m MIN_WINDOW_LIMIT] [-c CANDIDATE_PATH] [-p] [-d]
+usage: wisebetool [-h] [-r REFERENCES_DIR] [-m MIN_WINDOW_LIMIT] [-c CANDIDATE_PATH] [-p] [-d]
 
-Window Based Sentence Boundary Evaluation (WiSeBE) evaluation toolkit.
+Window Based Sentence Boundary Evaluation Toolkit (WiSeBETool).
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -42,8 +50,9 @@ optional arguments:
 ```
 
 **Simple execution without candidate segmentation and references in default folder**
+
 ```bash
-$ wisebe
+$ wisebetool
 ```
 Output
 ```
@@ -68,7 +77,7 @@ All references look similar :)
 **Execution with candidate segmentation "~/Desktop/my_candidates/candidate_A.txt", references in "~/Desktop/my_references" folder, window borders size equal to 4, plotting and dumping options activated**
 
 ```bash
-$ wisebe -c ~/Desktop/my_candidates/candidate_A.txt -r ~/Desktop/my_references -m 4 -p -d 
+$ wisebetool -c ~/Desktop/my_candidates/candidate_A.txt -r ~/Desktop/my_references -m 4 -p -d 
 ```
 Output
 ```

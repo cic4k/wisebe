@@ -1,12 +1,25 @@
 # Author: Carlos Gozález <carlos-emiliano.gonzalez-gallardo@sorbonne-universite.fr>
 # Copyright (C) 2020 Carlos González <carlos-emiliano.gonzalez-gallardo@sorbonne-universite.fr>
-# Cite as: 
+# Cite as: González-Gallardo, C. E., & Torres-Moreno, J. M. (2018, October).
+#          WiSeBE: Window-based Sentence Boundary Evaluation.
+#          In Mexican International Conference on Artificial Intelligence (pp. 119-131). Springer, Cham.
 # Licensed under the GNU LGPL v2.1 - http://www.gnu.org/licenses/lgpl.html
 
-"""WiSeBE evaluation tool.
-Examples
---------
-    >>>python wisebe/wisebe.py -c ./candidate/candidate1.txt -r ./refereces -m 4 -p -d
+"""
+    Window based Sentence Boundary Evaluation Toolkit (WiSeBETool).
+
+    Usage
+    --------
+    # Display options and get general information of WiSeBE
+    ~$ wisebetool -h
+
+    # Simple execution without candidate segmentation and references in default folder
+    ~$ wisebetool
+
+    # Execution with candidate segmentation "~/Desktop/my_candidates/candidate_A.txt",
+    #  references in "~/Desktop/my_references" folder, window borders size equal to 4,
+    #  plotting and dumping options activated
+    ~$ wisebetool -c ~/Desktop/my_candidates/candidate_A.txt -r ~/Desktop/my_references -m 4 -p -d
 """
 
 from itertools import zip_longest
@@ -15,9 +28,12 @@ import sys
 import os
 import glob
 from collections import Counter
+import pathlib
 import matplotlib.pyplot as plt
 import numpy as np
 from wisebe.Segmentation import Segmentation
+#from Segmentation import Segmentation
+
 
 def check_params():
     """Parsing of comand line arguments
@@ -27,12 +43,14 @@ def check_params():
     :class:`argparse.Namespac`
     """
 
-    description = "Window Based Sentence Boundary Evaluation interace program"
+    description = "Window Based Sentence Boundary Evaluation Toolkit (WiSeBETool)."""
     parser = ArgumentParser(description=description)
 
+    #here = pathlib.Path(__file__).parent.parent
+    #references_path = os.path.join(here, "references")
     parser.add_argument("-r", "--references_dir", type=str,
-                        help="Path to reference folder. Default: ./references/",
-                        default="./references/")
+                        help="Path to reference folder. Default: ./references",
+                        default="./references")
 
     parser.add_argument("-m", "--min_window_limit", type=int,
                         help="Min distance between window borders. Default: 3",
@@ -43,8 +61,6 @@ def check_params():
                         default=None)
 
     parser.add_argument("-p", "--plots", help="Whether or not to plot segmentations", action="store_true")
-
-    parser.add_argument("-v", "--verbose", help="Verbose", action="store_true")
 
     parser.add_argument("-d", "--dump", help="Dump segments to file", action="store_true")
 
@@ -338,10 +354,10 @@ def compute_stats_refs(gral_ref, references):
     print("**STATS**")
     print("- Common borders (cm): {}".format(common_borders))
     print("- Common borders ponderated (cmp): {}".format(common_borders_ponderated))
-    print("- Agreement Ratio (AR) AR = cmp / mb : {}".format(agreement_borders_ratio))
+    print("- Agreement Ratio (AR) AR = cmp / mb : {:0.4f}".format(agreement_borders_ratio))
     print("- Max borders (max_b) max_b = cm x |references| : {}".format(max_borders))
-    print("- Fleiss Kappa (K): {}".format(fleiss_k))
-    print("- Fleiss Kappa in borders (K_borders): {}".format(fleiss_k_borders))
+    print("- Fleiss Kappa (K): {:0.4f}".format(fleiss_k))
+    print("- Fleiss Kappa in borders (K_borders): {:0.4f}".format(fleiss_k_borders))
 
     return agreement_borders_ratio
 
