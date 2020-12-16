@@ -26,7 +26,7 @@ or download the [Bibtex](https://raw.githubusercontent.com/cic4k/wisebe/main/wis
 
 ## Usage
 
-**Display options and get general information of WiSeBE**
+**Display options and get general information of WiSeBETool**
 
 ```bash
 $ wisebetool -h  
