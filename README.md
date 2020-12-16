@@ -74,7 +74,7 @@ All references look similar :)
 
 
 
-**Execution with candidate segmentation "~/Desktop/my_candidates/candidate_A.txt", references in "~/Desktop/my_references" folder, window borders size equal to 4, plotting and dumping options activated**
+**Execution with candidate segmentation "\~/Desktop/my_candidates/candidate_A.txt", references in "\~/Desktop/my_references" folder, window borders size equal to 4, plotting and dumping options activated**
 
 ```bash
 $ wisebetool -c ~/Desktop/my_candidates/candidate_A.txt -r ~/Desktop/my_references -m 4 -p -d 
